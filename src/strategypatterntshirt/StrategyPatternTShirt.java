@@ -37,8 +37,15 @@ public class StrategyPatternTShirt {
     }
     
     public void makeAnOrder(TShirt tshirt, IPayment payment) {
-        payment.pay(320f);
-        
+        System.out.println(tshirt);
+//        System.out.println(payment.getClass().getName());
+        if(payment.getClass().getName().equals("strategypatterntshirt.CreditDebitCard")) {
+            payment.pay(tshirt.getFabric().getUnitPrice() + 5.0f);
+        }
+//        System.out.println("");
+        if(payment.getClass().getName().equals("strategypatterntshirt.MoneyBankTransfer")) {
+            payment.pay(tshirt.getFabric().getUnitPrice() + 3.0f);
+        }
         
     }
     
